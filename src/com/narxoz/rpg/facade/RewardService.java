@@ -2,10 +2,14 @@ package com.narxoz.rpg.facade;
 
 public class RewardService {
     public String determineReward(AdventureResult battleResult) {
-        // TODO: Decide reward rules based on battle outcome.
-        if (battleResult == null) {
-            return "TODO";
+        if (battleResult == null || battleResult.getWinner() == null) {
+            return "No reward (Invalid state)";
         }
-        return "TODO";
+
+        if (battleResult.getWinner().equals("Draw") || battleResult.getWinner().equals("Timeout")) {
+            return "A handful of rusty coins.";
+        }
+
+        return "Epic Loot Box and 1000 Gold!";
     }
 }
